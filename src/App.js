@@ -4,10 +4,9 @@ import "./App.css";
 
 class App extends Component {
   render() {
-    const fd = [1, 2, 3];
     return (
       <div className="App">
-        <Navbar title={fd} />
+        <Navbar />
       </div>
     );
   }
