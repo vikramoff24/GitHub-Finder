@@ -1,7 +1,7 @@
 //stateless component
 import React from "react";
 
-function UserItem(props) {
+const UserItem = (props) => {
   const { login, avatar_url, html_url } = props.user;
   return (
     <div className="card text-center">
@@ -19,6 +19,6 @@ function UserItem(props) {
       </div>
     </div>
   );
-}
+};
 
 export default UserItem;

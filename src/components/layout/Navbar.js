@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 //default Props
-export class NavBar extends Component {
+function NavBar (props){
   static defaultProps = {
     title: "Github Finder",
     icon: "fab fa-github",
@@ -13,15 +13,14 @@ export class NavBar extends Component {
     icon: PropTypes.string.isRequired,
   };
   //for arrays Proptypes.array.isRequired
-  render() {
-    return (
+return (
       <nav className="navbar bg-primary">
         <h1>
-          <i className={this.props.icon} /> {this.props.title}
+          <i className={props.icon} /> {props.title}
         </h1>
       </nav>
     );
-  }
+
 }
 
 export default NavBar;
