@@ -11,7 +11,6 @@ class UserItem extends Component {
       html_url: "https://github.com/mojombo",
     };
   }
-
   render() {
     return (
       <div className="card text-center">
