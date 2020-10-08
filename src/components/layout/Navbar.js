@@ -8,10 +8,11 @@ export class NavBar extends Component {
     icon: "fab fa-github",
   };
   // propType - Type Checking
-  static propType = {
+  static propTypes = {
     title: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
   };
+  //for arrays Proptypes.array.isRequired
   render() {
     return (
       <nav className="navbar bg-primary">
