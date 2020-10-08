@@ -1,0 +1,12 @@
+{
+  "bracketPairColorizer.activeScopeCSS": [
+    "borderStyle : solid",
+    "borderWidth : 1px",
+    "borderColor : {color}; opacity: 0.5"
+  ],
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": { "*html": "html" },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}

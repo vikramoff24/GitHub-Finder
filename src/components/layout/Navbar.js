@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 
 export class NavBar extends Component {
+  static defaultProps = {
+    title: "Github Finder",
+    icon: "fab fa-github",
+  };
   render() {
     return (
-      <div>
-        <nav className="navbar bg-primary">NavBar</nav>
-      </div>
+      <nav className="navbar bg-primary">
+        <h1>
+          <i className={this.props.icon} /> {this.props.title}
+        </h1>
+      </nav>
     );
   }
 }
