@@ -61,15 +61,20 @@ render() {
         <div className="container">
         <Alert alert={alert}/>
         <Switch>
+
+        {/* Routing the site to home page */}
         <Route exact path='/' render ={(props)=>(
           <Fragment>
-<Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={
+        <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={
             this.state.users.length>0?true:false} setAlert={this.setAlert}/>
           <Users loading={loading} users={users}    />
           </Fragment>
         )} />
-        
-          </Switch>
+
+         {/* Routing the site to About page */}
+         {/* Only SingleComponent is rendered we use compoent props */}
+       <Route exact path="/about" component={About}/>
+</Switch>
         </div>
       </div>
       </Router>
