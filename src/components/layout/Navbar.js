@@ -13,7 +13,7 @@ const NavBar = ({ icon, title }) => {
           {/* Link used for routing to other page with state */}
         </li>
         <li>
-          <Link to="/about">Home</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
     </nav>
