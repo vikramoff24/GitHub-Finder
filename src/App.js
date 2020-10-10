@@ -12,18 +12,22 @@ class App extends Component {
      loading: false
    };
   
-  async componentDidMount() //called when component gets mounted.
-  { 
-    console.log(process.env.REACT_APP_GITHUB_CLIENT_ID)
-   this.setState({loading:true});
-   const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-   this.setState({users:res.data, loading:false});
-   console.log(res.data);
-   //axios.get("https://api.github.com/users").then(res=> console.log(res.data));
-  }
-searchUsers=text=>
+  // async componentDidMount() //called when component gets mounted.
+  // { 
+
+  //  this.setState({loading:true});
+  //  const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+  //  this.setState({users:res.data, loading:false});
+  //  console.log(res.data);
+  //  //axios.get("https://api.github.com/users").then(res=> console.log(res.data));
+  // }
+searchUsers=async text=>
 {
-  console.log(text);
+
+  this.setState({loading:true});
+  const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+  this.setState({users:res.data.items, loading:false});
+
 }
 
   render() {
