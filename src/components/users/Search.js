@@ -11,16 +11,23 @@ static propTypes=
     clearUsers:  PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
    }
-
 onChange= e=>this.setState({
         [e.target.name]:e.target.value
     })
 
-onSubmit =e=>{e.preventDefault();
+onSubmit =e=>{
+e.preventDefault();
+
+if(this.state.text==='')
+{
+    this.props.setAlert("Please enter Something","light")
+}
+else{
 this.props.searchUsers(this.state.text)//sending the value up to the App component.
 this.setState({
     text:"",
 })
+}
 }
 
 render() {

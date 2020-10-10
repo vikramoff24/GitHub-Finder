@@ -1,15 +1,18 @@
-import React, { Component } from "react";
+import React, { Fragment,Component } from "react";
+import {BrowserRouter as Router ,Switch,Route} from 'react-router-dom';
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import axios from 'axios'; // it is used for working with apis 
+import Alert from "./components/layout/Alert"
 import "./App.css";
 
 class App extends Component {
 
   state={
      users:[],
-     loading: false
+     loading: false,
+     alert:null
    };
 
   
@@ -33,19 +36,42 @@ searchUsers=async text=>
 clearUsers=()=>
 {
   this.setState({users:[], loading:false});
-}
+
+ 
+} 
+
+setAlert=(msg,type)=>
+{
+this.setState({alert:{
+  // msg:msg,
+  // type:type
+  // both the property and value is same 
+  msg,type
+}})
+setTimeout(()=>this.setState({alert:null}),3000);
+} 
 render() {
 
-  const{users,loading}=this.state;
+  const{users,loading,alert}=this.state;
     return (
+      <Router>
       <div className="App">
         <Navbar />
         <div className="container">
-        <Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={
-            this.state.users.length>0?true:false}/>
+        <Alert alert={alert}/>
+        <Switch>
+        <Route exact path='/' render ={(props)=>(
+          <Fragment>
+<Search searchUsers={this.searchUsers} clearUsers={this.clearUsers} showClear={
+            this.state.users.length>0?true:false} setAlert={this.setAlert}/>
           <Users loading={loading} users={users}    />
+          </Fragment>
+        )} />
+        
+          </Switch>
         </div>
       </div>
+      </Router>
     );
   }
 }
