@@ -5,6 +5,7 @@ import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import axios from 'axios'; // it is used for working with apis 
 import Alert from "./components/layout/Alert"
+import About from "./components/pages/About"
 import "./App.css";
 
 class App extends Component {
