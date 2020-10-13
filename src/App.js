@@ -14,8 +14,10 @@ class App extends Component {
   state={
      users:[],
      loading: false,
+     repos:[],
      alert:null, 
-     user:{}
+     user:{},
+    
    };
 // async componentDidMount() //called when component gets mounted.
   // { 
@@ -35,10 +37,17 @@ searchUsers=async text=>
 
 //Get single GitHub user
 
-getUser =async (userName)=>{
+getUser=async (userName)=>{
  const res= await axios.get(`https://api.github.com/users/${userName}?&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
  this.setState({user:res.data, loading:false});
 }
+
+//Get single GitHub Repos
+
+getUserRepos =async (userName)=>{
+  const res= await axios.get(`https://api.github.com/users/${userName}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+  this.setState({repos:res.data, loading:false});
+ }
 
 clearUsers=()=>
 {
@@ -59,7 +68,7 @@ setTimeout(()=>this.setState({alert:null}),3000);
 } 
 render() {
 
-  const{users,loading,alert,user}=this.state;
+  const{users,loading,alert,user,repos}=this.state;
     return (
       <Router>
       <div className="App">
@@ -81,7 +90,9 @@ render() {
          {/* Only SingleComponent is rendered ,we use compoent props. for this about component we do not send any props to it*/}
        <Route exact path="/about" component={About}/>
        {/* Routing to single User component */}
-       <Route exact path="/user/:login" render={(props)=><User {...props} getUser={this.getUser} user={user} loading={loading}/>
+       <Route exact path="/user/:login" render={(props)=><User {...props}
+        getUser={this.getUser} user={user} loading={loading} getUserRepos={this.getUserRepos}
+        repos={repos} />
         }/>
 </Switch>
         </div>
