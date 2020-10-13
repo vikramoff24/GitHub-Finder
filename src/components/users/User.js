@@ -3,26 +3,20 @@ import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import Repos from '../repos/Repos'
-class User extends Component {
-static propTypes={
-    loading: PropTypes.bool,
-    user: PropTypes.object.isRequired,
-    getUser: PropTypes.func.isRequired,
-    getUserRepos: PropTypes.func.isRequired,
-    repos: PropTypes.array.isRequired,
-}
+
+
+const User =(user,loading,getUser,getRepos,repos,match)=> {
 
 componentDidMount()
 {
-    this.props.getUser(this.props.match.params.login); //from{...props}
-    this.props.getUserRepos(this.props.match.params.login);
+    this.props.getUser(match.params.login); //from{...props}
+    this.props.getUserRepos(match.params.login);
 }
 
     render() {
         const {name,avatar_url,location,bio,blog,login,html_url,followers,
-            following,public_repos,public_gists,hireable,company}=this.props.user;
+            following,public_repos,public_gists,hireable,company}=user;
 
-            const {loading,repos}=this.props;
 
 if(loading)
 {
@@ -74,6 +68,12 @@ style={{width:'150px'}}
         
     }
 }
-
+User.propTypes={
+    loading: PropTypes.bool,
+    user: PropTypes.object.isRequired,
+    getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
+    repos: PropTypes.array.isRequired,
+}
 export default User;
 
