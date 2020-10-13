@@ -1,22 +1,25 @@
-import React, { Component,Fragment } from 'react'
+import React, {Fragment,useEffect} from 'react'
 import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import Repos from '../repos/Repos'
 
 
-const User =(user,loading,getUser,getRepos,repos,match)=> {
+const User =({user,loading,getUser,getUserRepos,repos,match})=> { //here props is an object so we can destructure its objects
 
-componentDidMount()
+useEffect(()=>
 {
-    this.props.getUser(match.params.login); //from{...props}
-    this.props.getUserRepos(match.params.login);
-}
+    getUser(match.params.login); //from{...props}
+    getUserRepos(match.params.login); // next line is used for avoiding the warning 
+    // eslint-disable-next-line  
+  },[]);
+    //useEffect is used for constly updating the things - like replacement for componentDidupdate(), to stop that we use [] as a params.which is replacement for componentDidMount()
+    //we can also give [some value here] - for updating only when particular thing changes. [repos] repos if it changes - it will run. 
 
-    render() {
-        const {name,avatar_url,location,bio,blog,login,html_url,followers,
+const {name,avatar_url,location,bio,blog,login,html_url,followers,
             following,public_repos,public_gists,hireable,company}=user;
-
+//this can be destructured in the function parameter itself. like -- (user:{name,avatar_url,location,bio,blog,login,html_url,followers,
+         //   following,public_repos,public_gists,hireable,company})
 
 if(loading)
 {
@@ -67,7 +70,7 @@ style={{width:'150px'}}
           </Fragment>
         
     }
-}
+
 User.propTypes={
     loading: PropTypes.bool,
     user: PropTypes.object.isRequired,
