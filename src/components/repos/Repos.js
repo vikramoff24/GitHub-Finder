@@ -7,7 +7,7 @@ const Repos = ({repos}) => {
 
 Repos.prototype=
 {
-repos=PropTypes.arrayt.isRequired,
+repos:PropTypes.array.isRequired,
 }
 
 export default Repos
