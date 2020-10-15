@@ -24,5 +24,7 @@ switch(action.type)
                  ...state,
                  loading:true
              };
+        default:
+            return state;
 }
-}
+};
