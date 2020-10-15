@@ -39,6 +39,12 @@ dispatch({
 })
 };
 
+//Clear Users
+
+const clearUsers=()=>
+{
+    dispatch({type:CLEAR_USERS})
+} 
 
 //Set Loading
 const setLoading=()=> dispatch({type:SET_LOADING});

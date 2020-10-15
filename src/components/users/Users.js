@@ -2,10 +2,12 @@ import React ,{useContext} from "react";
 import UserItem from "./UserItem";
 import Spinner from "../layout/Spinner"
 import GithubContext from "../context/github/githubContext"
-const Users= ({loading})=>
+const Users= ()=>          //props is pased inside a function where as Context is intiailized with the help of useContext Hooks 
 {
 const githubContext=useContext(GithubContext);
 
+//destructing the githubContext object.
+const {loading,users}=githubContext;
   if(loading)
 {
   return <Spinner/>
@@ -13,7 +15,7 @@ const githubContext=useContext(GithubContext);
 else
 {
   return <div style={userStyle}>
-        {githubContext.users.map((user) => (
+        {users.map((user) => (
           <UserItem key={user.id} user={user} />
         ))}
       </div>
