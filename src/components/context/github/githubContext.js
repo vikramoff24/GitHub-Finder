@@ -1,7 +1,6 @@
-  //initailing a new context 
-  import {createContext} from 'react';
+//initailing a new context
+import { createContext } from "react";
 
-  const githubContext= createContext();
+const githubContext = createContext();
 
-  export default githubContext;
-  
+export default githubContext;
