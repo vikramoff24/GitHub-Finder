@@ -1,13 +1,15 @@
 import React,{useState,useContext} from 'react'
 //Importing Github Context. as we manage state with Context API....we don't need to import prop types
 import GithubContext from '../context/github/githubContext'
-
-const Search =({setAlert})=> {
+import AlertContext from '../context/alert/alertContext'
+const Search =()=> {
    
     //intialing hooks
 const githubContext =useContext(GithubContext);
     const [text,setText]=useState('');
 
+    const alertContext =useContext(AlertContext);
+   
 
     const onChange= e=>setText(e.target.value);
 
@@ -16,7 +18,7 @@ e.preventDefault();
 
 if(text==='')
 {
-    setAlert("Please enter Something","light")
+    alertContext.setAlert("Please enter Something","light")
 }
 else{
 githubContext.searchUsers(text) //this text parameter is send to the function inside the github state file.
