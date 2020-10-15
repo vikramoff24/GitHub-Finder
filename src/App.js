@@ -4,7 +4,6 @@ import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
 import User from "./components/users/User"
 import Search from "./components/users/Search";
-import axios from 'axios'; // it is used for working with apis 
 import Alert from "./components/layout/Alert"
 import About from "./components/pages/About"
 import "./App.css";
@@ -49,7 +48,7 @@ setTimeout(()=>setAlert(null),3000);
          {/* Only SingleComponent is rendered ,we use compoent props. for this about component we do not send any props to it*/}
        <Route exact path="/about" component={About}/>
        {/* Routing to single User component */}
-       <Route exact path="/user/:login" render={(props)=><User {...props}
+       <Route exact path="/user/:login" component={User}
          />
         }/>
 </Switch>
