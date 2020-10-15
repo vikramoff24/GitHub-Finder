@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import PropTypes from 'prop-types'
+//Importing Github Context.
+import GithubContext from '../context/github/githubContext'
 
-
-const Search =({searchUsers,showClear,clearUsers,setAlert})=> {
-
+const Search =({showClear,clearUsers,setAlert})=> {
+    //intialing hooks
+const githubContext =useContext(GithubContext);
     const [text,setText]=useState('');
 
 
@@ -17,7 +19,7 @@ if(text==='')
     setAlert("Please enter Something","light")
 }
 else{
-searchUsers(text)//sending the value up to the App component.
+githubContext.searchUsers(text) //this text parameter is send to the function inside the github state file.
 setText('');
 }
 }
@@ -37,7 +39,6 @@ return (
 
 Search.propTypes=
    {
-    searchUsers: PropTypes.func.isRequired,
     clearUsers:  PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
    }

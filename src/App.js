@@ -17,25 +17,6 @@ const App =()=> {
  const [repos,setRepos]=useState([]);
  const [loading,setLoading]=useState(false);
  const [alert,setAlert]=useState(null);
-  // state={    -- this can be put into a constructor with super() called.
-  //    users:[],
-  //    loading: false,
-  //    repos:[],
-  //    alert:null, 
-  //    user:{},
-    
-  //  };
-// async componentDidMount() //called when component gets mounted.
-  // { 
-
-  //  this.setState({loading:true});
-  //  const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-  //  this.setState({users:res.data, loading:false});
-  //  console.log(res.data);
-  //  //axios.get("https://api.github.com/users").then(res=> console.log(res.data));
-  // }
-
-
 
 //Get single GitHub user
 
@@ -84,7 +65,7 @@ setTimeout(()=>setAlert(null),3000);
         {/* Routing the site to home page */}
         <Route exact path='/' render ={(props)=>(
           <Fragment>
-        <Search searchUsers={searchUsers} clearUsers={clearUsers} showClear={
+        <Search clearUsers={clearUsers} showClear={
             users.length>0?true:false} setAlert={showAlert}/>
           <Users loading={loading} users={users}    />
           </Fragment>
