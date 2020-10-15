@@ -1,15 +1,14 @@
 import React, {Fragment,useEffect,useContext} from 'react'
 import Spinner from '../layout/Spinner'
-import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import Repos from '../repos/Repos'
 import GithubContext from '../context/github/githubContext'
 
-const User =({getUserRepos,repos,match})=> { //here props is an object so we can destructure its objects
+const User =({match})=> { //here props is an object so we can destructure its objects
 
     const githubContext=useContext(GithubContext);
 
-    const {getUser,user,loading}=githubContext;
+    const {getUserRepos,getUser,user,loading}=githubContext;
     
 useEffect(()=>
 {
@@ -70,14 +69,9 @@ style={{width:'150px'}}
     <div className="badge badge-dark">Public Gists:{public_gists}</div>
 
 </div>
-<Repos repos={repos}/>
+<Repos/>
           </Fragment>
         
     }
-
-User.propTypes={
-    getUserRepos: PropTypes.func.isRequired,
-    repos: PropTypes.array.isRequired,
-}
 export default User;
 

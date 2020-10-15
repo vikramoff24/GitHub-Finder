@@ -12,23 +12,9 @@ import "./App.css";
 import GithubState from "./components/context/github/GithubState"
 const App =()=> {
 
- const [repos,setRepos]=useState([]);
- const [loading,setLoading]=useState(false);
- const [alert,setAlert]=useState(null);
-
-//Get single GitHub user
+const [alert,setAlert]=useState(null);
 
 
-
-//Get single GitHub Repos
-
-const getUserRepos =async (userName)=>{
-  setLoading(true);
-  const res= await axios.get(`https://api.github.com/users/${userName}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-  //this.setState({repos:res.data, loading:false});
-  setRepos(res.data);
-  setLoading(false);
- }
 
 
 
@@ -64,8 +50,7 @@ setTimeout(()=>setAlert(null),3000);
        <Route exact path="/about" component={About}/>
        {/* Routing to single User component */}
        <Route exact path="/user/:login" render={(props)=><User {...props}
-        l getUserRepos={getUserRepos}
-        repos={repos} />
+         />
         }/>
 </Switch>
         </div>

@@ -1,5 +1,4 @@
 //reducer is function, which sets state of component accoring to action and payload
-
 import {
     SEARCH_USERS,
     SET_LOADING,
