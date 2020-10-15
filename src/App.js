@@ -5,6 +5,7 @@ import User from "./components/users/User";
 import Alert from "./components/layout/Alert"
 import Home from "./components/pages/Home"
 import About from "./components/pages/About"
+import NotFound from "./components/pages/NotFound"
 import "./App.css";
 //Getting State from Context API
 import GithubState from "./components/context/github/GithubState"
@@ -30,7 +31,8 @@ return (
        {/* Routing to single User component */}
        <Route exact path="/user/:login" component={User}
          />
-        
+        {/*if the user gives some other end point then */}
+        <Route component={NotFound}/>
 </Switch>
         </div>
       </div>
