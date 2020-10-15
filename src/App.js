@@ -8,7 +8,8 @@ import axios from 'axios'; // it is used for working with apis
 import Alert from "./components/layout/Alert"
 import About from "./components/pages/About"
 import "./App.css";
-
+//Getting State from Context API
+import GithubState from "./components/context/github/GithubState"
 const App =()=> {
 
  const [users,setUsers]=useState([]);
@@ -80,6 +81,7 @@ setAlert({
 setTimeout(()=>setAlert(null),3000);
 } 
     return (
+      <GithubState>
       <Router>
       <div className="App">
         <Navbar />
@@ -108,6 +110,7 @@ setTimeout(()=>setAlert(null),3000);
         </div>
       </div>
       </Router>
+      </GithubState>
     );
   }
 
