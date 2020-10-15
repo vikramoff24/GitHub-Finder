@@ -1,5 +1,4 @@
 import React,{useState,useContext} from 'react'
-import PropTypes from 'prop-types'
 //Importing Github Context. as we manage state with Context API....we don't need to import prop types
 import GithubContext from '../context/github/githubContext'
 
