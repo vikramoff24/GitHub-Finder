@@ -13,14 +13,7 @@ const App =()=> {
 
 const [alert,setAlert]=useState(null);
 
-const showAlert=(msg,type)=>
-{
-setAlert({
-  // msg:msg,
-  // type:type
-  // both the property and value is same 
-  msg,type
-})
+
 setTimeout(()=>setAlert(null),3000);
 } 
     return (

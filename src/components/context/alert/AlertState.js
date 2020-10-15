@@ -1,39 +1,28 @@
-import React from 'react';
+import React,{useReducer} from 'react';
 import AlertContext from './alertContext'
 import AlertReducer from './alertReducer'
 import {SET_ALERT,REMOVE_ALERT} from "../types"
 
-const AlertState=(props)=>
+const AlertState=(props)=>{
+const initialState=
 {
-const initialState=()=>
-{
-alert:null
+alert:null,
 }
 
 const [state, dispatch] = useReducer(AlertReducer, initialState)
 
-
-
-
-
-
-
-return <AlertContext.Provider values ={
-{alert:state.alert,}
-}>
-
-
-
-<AlertContext.Provider/>
-
-
-
-
-
-
-
-
+//show Alert
+const showAlert=(msg,type)=>
+{
+dispatch({type:SET_ALERT,payload:{msg,type}})
 }
 
-export default 
 
+
+return (<AlertContext.Provider values={
+{alert:state.alert,showAlert}}>
+{props.children} 
+</AlertContext.Provider>)
+}
+
+export default AlertState
