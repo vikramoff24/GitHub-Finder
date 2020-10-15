@@ -35,7 +35,7 @@ const searchUsers=async text=>
 //   setLoading(false);
 dispatch({
     type: SEARCH_USERS,
-    payload:res.data
+    payload:res.data.items
 })
 };
 
@@ -48,9 +48,10 @@ const setLoading=()=> dispatch({type:SET_LOADING});
 return(<GithubContext.Provider
 value={{
 users:state.users,
-user:state.user,
+user:state.user,  
 repos:state.repos,
-loading: state.loading
+loading: state.loading,
+searchUsers  //to use that function we need to add like this. Inorder to use by some one.
 }}>
 {/* wrapping entire application in this provider */}
 {props.children} 
